@@ -1,0 +1,33 @@
+
+plugins {
+    id "net.ltgt.apt" version "0.19"
+    id "idea"
+}
+
+dependencies {
+    implementation 'com.google.dagger:dagger:2.25.4'
+    apt 'com.google.dagger:dagger-compiler:2.25.4'
+}
+
+test {
+
+    dependencies {
+        testImplementation 'org.testng:testng:7.3.0'
+    }
+
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+}
+
+idea {
+    module {
+        // Not using generatedSourceDirs because of
+        // https://discuss.gradle.org/t/support-for-intellij-2016/15294/8
+        sourceDirs += file("${projectDir}/build/generated/source/apt/main/java");
+        sourceDirs += file("${projectDir}/build/generated/source/apt/main/test");
+    }
+}

@@ -1,0 +1,32 @@
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+        
+repositories {
+   mavenCentral()
+   mavenLocal()
+}
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'org.slf4j:slf4j-simple:1.7.30'
+   implementation 'org.hibernate:hibernate-core:5.4.14.Final'
+   implementation 'org.postgresql:postgresql:42.2.12'
+
+   testImplementation 'org.apache.derby:derby:10.15.2.0'
+   testImplementation 'org.apache.derby:derbytools:10.15.2.0'
+   testImplementation 'org.apache.derby:derbyshared:10.15.2.0'
+   testImplementation 'org.testng:testng:7.3.0'
+}
+
+test {
+   // enable TestNG support (default is JUnit)
+   useTestNG()
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+}
+

@@ -1,0 +1,33 @@
+
+apply plugin: 'java'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+version = '2.0.0'
+group = 'itx.java.examples.enigma'
+
+repositories {
+   mavenLocal()
+   mavenCentral()
+}
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+
+   testImplementation 'org.slf4j:slf4j-log4j12:1.7.30'
+   testImplementation 'org.testng:testng:7.4.0'
+}
+
+test {
+   // enable TestNG support (default is JUnit)
+   if (System.properties['test.profile'] != 'integration') {
+      exclude '**/*TestsIT*'
+   }
+   useTestNG()
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+}
+

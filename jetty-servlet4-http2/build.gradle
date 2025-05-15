@@ -1,0 +1,65 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'itx.examples.jetty.Main'
+
+applicationDefaultJvmArgs = ["-Xms64M", "-Xmx64M" ]
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+def jettyVersion = '9.4.26.v20200117'
+def jerseyVersion = '2.30'
+def slf4jVersion = '1.7.30'
+
+repositories {
+   mavenCentral()
+}
+
+test {
+   useTestNG()
+   //testLogging.showStandardStreams = true
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+
+   if (System.properties['test.profile'] != 'integration') {
+      exclude '**/*ITTest*'
+   }
+}
+
+dependencies {
+   implementation "org.eclipse.jetty:jetty-server:${jettyVersion}"
+   implementation "org.eclipse.jetty:jetty-servlet:${jettyVersion}"
+   implementation "org.eclipse.jetty.http2:http2-server:${jettyVersion}"
+   implementation "org.eclipse.jetty.http2:http2-client:${jettyVersion}"
+   implementation "org.eclipse.jetty.http2:http2-http-client-transport:${jettyVersion}"
+   implementation "org.eclipse.jetty:jetty-alpn-server:${jettyVersion}"
+   implementation "org.eclipse.jetty:jetty-client:${jettyVersion}"
+   implementation "org.eclipse.jetty.websocket:websocket-api:${jettyVersion}"
+   implementation "org.eclipse.jetty.websocket:websocket-server:${jettyVersion}"
+   implementation "org.eclipse.jetty.websocket:websocket-client:${jettyVersion}"
+
+   implementation "org.eclipse.jetty:jetty-alpn-java-server:${jettyVersion}"
+   implementation "org.eclipse.jetty:jetty-alpn-java-client:${jettyVersion}"
+
+   implementation "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+   implementation "javax.xml.bind:jaxb-api:2.3.1"
+
+   implementation "org.glassfish.jersey.core:jersey-server:${jerseyVersion}"
+   implementation "org.glassfish.jersey.containers:jersey-container-jetty-http:${jerseyVersion}"
+   implementation "org.glassfish.jersey.containers:jersey-container-servlet-core:${jerseyVersion}"
+   implementation "org.glassfish.jersey.media:jersey-media-json-jackson:${jerseyVersion}"
+   implementation "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
+
+   implementation "org.jboss.resteasy:resteasy-servlet-initializer:4.4.2.Final"
+   implementation "javax.servlet:javax.servlet-api:4.0.1"
+
+   implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+   implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
+
+   testImplementation "org.testng:testng:7.3.0"
+}
+
+

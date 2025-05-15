@@ -1,0 +1,66 @@
+subprojects {
+
+    apply plugin: "java"
+
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
+  
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        implementation 'org.slf4j:slf4j-api:1.7.30'
+        implementation 'org.slf4j:slf4j-simple:1.7.30'
+    }
+
+}
+
+project(':data-service') {
+}
+
+project(':di-spring') {
+    dependencies {
+        implementation project(':data-service')
+    }
+}
+
+project(':di-guice') {
+    dependencies {
+        implementation project(':data-service')
+    }
+}
+
+project(':di-dagger') {
+    dependencies {
+        implementation project(':data-service')
+    }
+}
+
+project(':app-simple') {
+    dependencies {
+        implementation project(':data-service')
+    }
+}
+
+project(':app-spring') {
+    dependencies {
+        implementation project(':data-service')
+        implementation project(':di-spring')
+    }
+}
+
+project(':app-guice') {
+    dependencies {
+        implementation project(':data-service')
+        implementation project(':di-guice')
+    }
+}
+
+project(':app-dagger') {
+    dependencies {
+        implementation project(':data-service')
+        implementation project(':di-dagger')
+    }
+}

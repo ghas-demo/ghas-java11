@@ -1,0 +1,49 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+mainClassName = "itx.examples.akka.cluster.sshsessions.Application"
+
+group    = 'itx.examples.akka.cluster'
+version  = '1.0.0'
+
+application {
+   applicationDefaultJvmArgs = ['-Dconfig.override_with_env_vars=true' ]
+}
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'org.slf4j:slf4j-simple:1.7.30'
+
+   implementation 'com.typesafe.akka:akka-actor_2.12:2.5.23'
+   implementation 'com.typesafe.akka:akka-cluster_2.12:2.5.23'
+   implementation 'com.typesafe.akka:akka-remote_2.12:2.5.23'
+   implementation 'com.typesafe.akka:akka-cluster-tools_2.12:2.5.23'
+   implementation 'com.typesafe.akka:akka-discovery_2.12:2.5.21'
+
+   implementation 'com.lightbend.akka.management:akka-management_2.12:1.0.1'
+   implementation 'com.lightbend.akka.management:akka-management-cluster-http_2.12:1.0.1'
+   implementation 'com.lightbend.akka.management:akka-management-cluster-bootstrap_2.12:1.0.1'
+
+   implementation 'com.google.guava:guava:28.0-jre'
+   implementation 'org.apache.sshd:sshd-core:2.2.0'
+   implementation 'com.beust:jcommander:1.78'
+
+   testImplementation 'org.testng:testng:7.3.0'
+   testImplementation 'com.jayway.awaitility:awaitility:1.7.0'
+}
+
+test {
+   // enable TestNG support (default is JUnit)
+   useTestNG()
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+}

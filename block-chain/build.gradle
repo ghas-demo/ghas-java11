@@ -1,0 +1,38 @@
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+        
+repositories {
+   mavenCentral()
+   mavenLocal()
+}
+
+publishing {
+   publications {
+      maven(MavenPublication) {
+         groupId = 'itx.blockchain'
+         artifactId = 'blockchain'
+         version = '1.0.0'
+
+         from components.java
+      }
+   }
+}
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'org.slf4j:slf4j-simple:1.7.30'
+   testImplementation 'org.testng:testng:7.3.0'
+}
+
+test {
+   // enable TestNG support (default is JUnit)
+   useTestNG()
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+}
+

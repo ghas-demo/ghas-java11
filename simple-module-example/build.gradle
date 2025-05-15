@@ -1,0 +1,34 @@
+subprojects {
+    apply plugin: "java"
+
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
+  
+    repositories {
+        mavenCentral()
+    }
+
+}
+
+project(':service-compute') {
+}
+
+project(':service-compute-async') {
+    dependencies {
+        implementation project(':service-compute')
+        implementation project(':service-tasks')
+    }
+}
+
+project(':service-tasks') {
+}
+
+project(':application') {
+    dependencies {
+        implementation project(':service-compute')
+        implementation project(':service-tasks')
+        implementation project(':service-compute-async')
+    }
+}
+
+

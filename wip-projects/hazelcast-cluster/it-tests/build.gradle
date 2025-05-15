@@ -1,0 +1,32 @@
+
+apply plugin: 'java'
+
+repositories {
+   mavenLocal()
+   mavenCentral()
+}
+
+test {
+   useTestNG()
+   //testLogging.showStandardStreams = true
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+
+   if (System.properties['test.profile'] != 'integration') {
+      exclude '**/*ITTest*'
+   }
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'org.slf4j:slf4j-simple:1.7.30'
+
+   implementation 'org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813'
+
+   testImplementation 'org.testng:testng:7.3.0'
+}
+

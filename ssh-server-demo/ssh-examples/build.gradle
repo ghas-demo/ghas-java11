@@ -1,0 +1,37 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+   mavenLocal()
+   mavenCentral()
+}
+
+test {
+   useTestNG()
+   //testLogging.showStandardStreams = true
+   testLogging {
+      events "passed", "skipped", "failed"
+   }
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+mainClassName = "itx.examples.sshd.Main"
+
+applicationDefaultJvmArgs = [ "-Xms32m", "-Xmx32m" ]
+
+dependencies {
+   implementation 'org.slf4j:slf4j-api:1.7.30'
+   implementation 'org.slf4j:slf4j-simple:1.7.30'
+   implementation 'org.apache.mina:mina-core:2.0.19'
+   implementation 'org.apache.sshd:sshd-core:2.0.0'
+
+   implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
+   implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
+   implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+
+   testImplementation 'org.testng:testng:7.3.0'
+}
+

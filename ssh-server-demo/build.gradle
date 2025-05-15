@@ -1,0 +1,34 @@
+subprojects {
+
+    apply plugin: "java"
+
+    targetCompatibility = '11'
+    sourceCompatibility = '11'
+  
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.slf4j:slf4j-api:1.7.30'
+        implementation 'org.slf4j:slf4j-simple:1.7.30'
+    }
+}
+
+project(':ssh-server') {
+}
+
+project(':ssh-client') {
+    dependencies {
+        implementation project(':ssh-server')
+    }
+}
+
+project(':ssh-examples') {
+    dependencies {
+        implementation project(':ssh-client')
+        implementation project(':ssh-server')
+    }
+}
+
+

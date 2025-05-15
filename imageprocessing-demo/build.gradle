@@ -1,0 +1,25 @@
+
+group 'itx.images'
+version '1.0-SNAPSHOT'
+apply plugin: 'java'
+
+sourceCompatibility = 11
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'com.drewnoakes:metadata-extractor:2.15.0'
+    testImplementation 'org.testng:testng:7.3.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

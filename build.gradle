@@ -1,0 +1,45 @@
+subprojects {
+    apply plugin: "java"
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+project(':block-chain') {}
+project(':akka-cluster-sshsessions') {}
+project(':futures-demo') {}
+project(':grpc-demo') {}
+//project(':hazelcast-cluster') {}
+project(':hibernate-demo') {}
+project(':jdbc-demo') {}
+project(':jetty-servlet4-http2') {}
+project(':kafka-example') {}
+project(':mongodb-demo') {}
+project(':simple-module-example') {}
+project(':ssh-server-demo') {}
+//project(':avro-demo') {}
+project(':imageprocessing-demo') {}
+project(':rxjava-demo') {}
+project(':elastic-demo') {}
+project(':rabbitmq-demo') {}
+project(':google-apis') {}
+project(':jackson-fasterxml-demo') {}
+project(':cached-model-demo') {}
+
+project(':jce-demo') {}
+project(':jwt-demo') {
+    dependencies {
+        implementation project(":jce-demo");
+    }
+}
+
+project(':r2dbc-demo') {}
+project(':java-is-weird') {}
+project(':redis-demo') {}
+project(':artefact-publishing-demo') {}
+project(':diffie-hellman-demo')
+project(':entropy-demo')
+project(':datetime-demo')
+project(':http-client-demo')
+project(':enigma-demo')

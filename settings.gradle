@@ -1,0 +1,81 @@
+include "block-chain"
+include "akka-cluster-sshsessions"
+
+include "futures-demo"
+include "grpc-demo"
+
+//include "hazelcast-cluster"
+//include "hz-common"
+//include "it-tests"
+//include "server-node"
+//project(":hz-common").projectDir = new File("hazelcast-cluster/hz-common")
+//project(":it-tests").projectDir = new File("hazelcast-cluster/it-tests")
+//project(":server-node").projectDir = new File("hazelcast-cluster/server-node")
+
+include "hibernate-demo"
+include "jdbc-demo"
+include "jetty-servlet4-http2"
+
+include "kafka-common"
+include "kafka-client"
+include "kafka-service"
+project(":kafka-common").projectDir = new File("kafka-example/kafka-common")
+project(":kafka-client").projectDir = new File("kafka-example/kafka-client")
+project(":kafka-service").projectDir = new File("kafka-example/kafka-service")
+include "kafka-example"
+
+include "mongodb-demo"
+
+include "service-compute"
+include "service-tasks"
+include "service-compute-async"
+include "application"
+project(":service-compute").projectDir = new File("simple-module-example/service-compute")
+project(":service-tasks").projectDir = new File("simple-module-example/service-tasks")
+project(":service-compute-async").projectDir = new File("simple-module-example/service-compute-async")
+project(":application").projectDir = new File("simple-module-example/application")
+include "simple-module-example"
+
+include "ssh-client"
+include "ssh-server"
+include "ssh-examples"
+project(":ssh-client").projectDir = new File("ssh-server-demo/ssh-client")
+project(":ssh-server").projectDir = new File("ssh-server-demo/ssh-server")
+project(":ssh-examples").projectDir = new File("ssh-server-demo/ssh-examples")
+include "ssh-server-demo"
+
+//include "avro-demo"
+include "imageprocessing-demo"
+include "rxjava-demo"
+include "elastic-demo"
+
+include "rabbitmq-demo"
+include "rmq-common"
+include "rmq-data-service"
+include "rmq-data-client"
+project(":rmq-common").projectDir = new File("rabbitmq-demo/rmq-common")
+project(":rmq-data-service").projectDir = new File("rabbitmq-demo/rmq-data-service")
+project(":rmq-data-client").projectDir = new File("rabbitmq-demo/rmq-data-client")
+
+include "google-apis"
+include "jce-demo"
+include "jackson-fasterxml-demo"
+include "cached-model-demo"
+
+include "jwt-demo"
+
+include "r2dbc-demo"
+include "java-is-weird"
+include "redis-demo"
+
+include "artefact-publishing-demo"
+include "test-artefact"
+include "test-project-gradle"
+project(":test-artefact").projectDir = new File("artefact-publishing-demo/test-artefact")
+project(":test-project-gradle").projectDir = new File("artefact-publishing-demo/test-project-gradle")
+
+include "diffie-hellman-demo"
+include "entropy-demo"
+include "datetime-demo"
+include "http-client-demo"
+include "enigma-demo"
