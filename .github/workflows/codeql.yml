@@ -8,7 +8,7 @@ jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
 
-    runs-on: [ self-hosted ]
+    runs-on: [ self-hosted, code-scanning ]
     permissions:
       actions: read
       contents: write
